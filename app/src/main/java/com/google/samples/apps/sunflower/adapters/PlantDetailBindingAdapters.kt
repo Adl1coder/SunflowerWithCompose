@@ -25,7 +25,10 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.samples.apps.sunflower.R
-
+/*
+ * Bu bağlama adaptörü, bir ImageView (resim görüntüleyici) nesnesine bir URL'den resim yüklemek için kullanılır.
+ * Eğer imageUrl boş veya null ise, işlem yapılmaz. Aksi takdirde, Glide kütüphanesi kullanılarak resim yüklenir ve görünüme yerleştirilir.
+ */
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (imageUrl.isNullOrEmpty()) {
@@ -37,6 +40,12 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
         .into(view)
 }
 
+/*
+ * Bu bağlama adaptörü, bir FloatingActionButton (kaydırılabilir düğme)
+ *  nesnesinin görünürlüğünü kontrol etmek için kullanılır.
+ * Eğer "isGone" değeri null veya true ise, düğme gizlenir (hide).
+ * Aksi durumda, düğme gösterilir (show).
+ */
 @BindingAdapter("isFabGone")
 fun bindIsFabGone(view: FloatingActionButton, isGone: Boolean?) {
     if (isGone == null || isGone) {
@@ -46,6 +55,11 @@ fun bindIsFabGone(view: FloatingActionButton, isGone: Boolean?) {
     }
 }
 
+/*
+ * Bu bağlama adaptörü, bir TextView (metin görüntüleyici) nesnesine HTML biçimli metni görüntülemek için kullanılır.
+ * "description" metni HTML biçiminde değilse, TextView boş olarak ayarlanır. Aksi takdirde, HtmlCompat.fromHtml ile metin HTML'den düzeltilir ve görüntülenir.
+ * Ayrıca, metindeki bağlantıları tıklanabilir yapmak için LinkMovementMethod ayarlanır.
+ */
 @BindingAdapter("renderHtml")
 fun bindRenderHtml(view: TextView, description: String?) {
     if (description != null) {
@@ -56,6 +70,10 @@ fun bindRenderHtml(view: TextView, description: String?) {
     }
 }
 
+/*
+ * Bu bağlama adaptörü, bitkinin sulama aralığını hesaplar ve görüntülemek için kullanılır.
+ * "wateringInterval", bitkinin sulama aralığını temsil eder ve R.plurals.watering_needs_suffix kaynağını kullanarak metni oluşturur.
+ */
 @BindingAdapter("wateringText")
 fun bindWateringText(textView: TextView, wateringInterval: Int) {
     val resources = textView.context.resources
@@ -67,3 +85,4 @@ fun bindWateringText(textView: TextView, wateringInterval: Int) {
 
     textView.text = quantityString
 }
+
