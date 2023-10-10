@@ -18,9 +18,15 @@ package com.google.samples.apps.sunflower.adapters
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+/*
+ * Bu bağlama adaptörü, bir görünümün görünürlüğünü kontrol etmek için kullanılır.
+ * Özellikle, "isGone" özelliği ile birlikte kullanılır ve bu özelliğin değerine göre
+ * görünümün görünmez veya görünür hale getirilmesini sağlar.
+ */
 
 @BindingAdapter("isGone")
 fun bindIsGone(view: View, isGone: Boolean) {
+    // "isGone" değerine göre görünümün görünürlüğünü kontrol eder.
     view.visibility = if (isGone) {
         View.GONE
     } else {
